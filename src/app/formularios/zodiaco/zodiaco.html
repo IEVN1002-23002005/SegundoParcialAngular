@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Zodiaco</h2>
+
+  <div>
+    <label>Nombre:</label>
+    <input #nombreInput type="text" placeholder="Tu nombre pa">
+  </div>
+
+  <br>
+
+  <div>
+    <label>Apellido paterno:</label>
+    <input #apellidoPInput type="text" placeholder="El paterno">
+  </div>
+
+  <br>
+
+  <div>
+    <label>Apellido materno:</label>
+    <input #apellidoMInput type="text" placeholder="El pmaterno">
+  </div>
+
+  <h3>Fecha de nacimiento</h3>
+
+  <label>Día:</label>
+  <input #diaInput type="text" inputmode="numeric">
+
+  <label>Mes:</label>
+  <input #mesInput type="text" inputmode="numeric">
+
+  <label>Año:</label>
+  <input #anioInput type="text" inputmode="numeric">
+
+  <div>
+    <label>Sexo:</label>
+    <input #hombreInput type="radio" name="sexo">
+    Masculino
+
+    <input #mujerInput type="radio" name="sexo">
+    Femenino
+  </div>
+
+  <button type="button" (click)="imprimir(nombreInput.value, apellidoPInput.value, apellidoMInput.value, anioInput.value, mesInput.value, diaInput.value, hombreInput.checked ? 'Masculino' : mujerInput.checked ? 'Femenino' : '')">
+    Imprimir
+  </button>
+
+  @switch (mostrarResultado) {
+    @case (true) {
+      <h2>Resultado</h2>
+      <p>Nombre: {{ nombre }} {{ apellidoP }} {{ apellidoM }}</p>
+      <p>Edad: {{ edad }}</p>
+      <p>Sexo: {{ sexo }}</p>
+      <p>Signo zodiacal: {{ signo }}</p>
+    }
+  }
+</div>
