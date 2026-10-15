@@ -60,4 +60,3 @@ export class VerRegistros implements OnInit {
     localStorage.setItem("registrosCinepolis", JSON.stringify(this.registros));
   }
 }
- */
