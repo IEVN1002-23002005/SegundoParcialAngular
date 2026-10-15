@@ -1,0 +1,44 @@
+<h1>Cinépolis</h1>
+
+<fieldset>
+  <legend>Entradas</legend>
+
+  <p>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" [(ngModel)]="nombre" />
+  </p>
+
+  <p>
+    <label for="compradores">Cantidad de compradores:</label>
+    <input id="compradores" type="number" min="1" [(ngModel)]="compradores" />
+  </p>
+
+  <p>
+    Tarjeta Cineco:
+    <label>
+      <input type="radio" name="cineco" [value]="true" [(ngModel)]="tarjetaCineco" />
+      Sí
+    </label>
+    <label>
+      <input type="radio" name="cineco" [value]="false" [(ngModel)]="tarjetaCineco" />
+      No
+    </label>
+  </p>
+
+  <p>
+    <label for="boletos">Cantidad de boletos:</label>
+    <input id="boletos" type="number" min="1" [(ngModel)]="boletos" />
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend>Salidas</legend>
+  <p>Valor a pagar: {{ total !== null ? '$' + total : '' }}</p>
+</fieldset>
+<br>
+
+<p>{{ mensaje }}</p>
+
+<button type="button" (click)="procesar()">Procesar</button>
+<br><br>
+<button type="button" (click)="verRegistros()">Ver Registros</button>

@@ -27,6 +27,16 @@ export const routes: Routes = [
             (m) => m.ListaAlumnos
           ),
       },
+      {
+        path: "cinepolis",
+        loadComponent: () =>
+          import("./escuela/cinepolis/cinepolis").then((m) => m.Cinepolis),
+      },
+      {
+        path: "ver-registros",
+        loadComponent: () =>
+          import("./escuela/ver-registros/ver-registros").then((m) => m.VerRegistros),
+      },
     ],
   },
   // ------------------------

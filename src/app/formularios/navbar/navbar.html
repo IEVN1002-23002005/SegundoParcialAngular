@@ -57,13 +57,34 @@
             >Lista Alumnos</a
           >
         </li>
+
+ <li>
+          <a
+            routerLink="/escuela/cinepolis"
+            routerLinkActive
+            #ci="routerLinkActive"
+            [class]="ci.isActive ? activo : inactivo"
+            >Cinepolis</a
+          >
+        </li>
+
+
+        <li>
+          <a
+            routerLink="/escuela/ver-registros"
+            routerLinkActive
+            #vr="routerLinkActive"
+            [class]="vr.isActive ? activo : inactivo"
+            >Registros</a
+          >
+        </li>
         <li>
           <a
             routerLink="/contact"
             routerLinkActive
             #c="routerLinkActive"
             [class]="c.isActive ? activo : inactivo"
-            >Contact</a
+            >Contacto</a
           >
         </li>
       </ul>
