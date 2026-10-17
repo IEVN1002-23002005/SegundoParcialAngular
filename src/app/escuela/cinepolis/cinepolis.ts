@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { IRegistroCinepolis } from "../registro-cinepolis";
 
 @Component({
   selector: "app-cinepolis",
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: "./cinepolis.html",
   //styleUrl: "./cinepolis.css",
 })

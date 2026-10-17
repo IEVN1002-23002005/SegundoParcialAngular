@@ -1,44 +1,43 @@
-<h1>Cinépolis</h1>
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+  <h1 class="text-2xl font-bold text-gray-700 mb-6">Cinépolis</h1>
 
-<fieldset>
-  <legend>Entradas</legend>
+  <form (ngSubmit)="procesar()" class="space-y-5">
+    <div>
+      <label for="nombre" class="block mb-2 text-sm font-medium text-gray-700">Nombre</label>
+      <input id="nombre" type="text" [(ngModel)]="nombre" name="nombre" required placeholder="Nombre"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+    </div>
 
-  <p>
-    <label for="nombre">Nombre:</label>
-    <input id="nombre" type="text" [(ngModel)]="nombre" />
-  </p>
+    <div>
+      <label for="compradores" class="block mb-2 text-sm font-medium text-gray-700">Cantidad de compradores</label>
+      <input id="compradores" type="number" min="1" [(ngModel)]="compradores" name="compradores" required placeholder="Cantidad de compradores"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+    </div>
 
-  <p>
-    <label for="compradores">Cantidad de compradores:</label>
-    <input id="compradores" type="number" min="1" [(ngModel)]="compradores" />
-  </p>
+    <div>
+      <label for="boletos" class="block mb-2 text-sm font-medium text-gray-700">Cantidad de boletos</label>
+      <input id="boletos" type="number" min="1" [(ngModel)]="boletos" name="boletos" required placeholder="Cantidad de boletos"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+    </div>
 
-  <p>
-    Tarjeta Cineco:
-    <label>
-      <input type="radio" name="cineco" [value]="true" [(ngModel)]="tarjetaCineco" />
-      Sí
-    </label>
-    <label>
-      <input type="radio" name="cineco" [value]="false" [(ngModel)]="tarjetaCineco" />
-      No
-    </label>
-  </p>
+    <div>
+      <span class="block mb-2 text-sm font-medium text-gray-700">Tarjeta Cineco</span>
+      <div class="flex gap-6">
+        <label class="flex items-center gap-2 text-sm text-gray-700"><input type="radio" name="cineco" [value]="true" [(ngModel)]="tarjetaCineco" class="w-4 h-4 text-blue-600" /> Sí</label>
+        <label class="flex items-center gap-2 text-sm text-gray-700"><input type="radio" name="cineco" [value]="false" [(ngModel)]="tarjetaCineco" class="w-4 h-4 text-blue-600" /> No</label>
+      </div>
+    </div>
 
-  <p>
-    <label for="boletos">Cantidad de boletos:</label>
-    <input id="boletos" type="number" min="1" [(ngModel)]="boletos" />
-  </p>
-</fieldset>
+    <div *ngIf="mensaje" class="p-3 text-sm text-red-800 rounded-lg bg-red-50">{{ mensaje }}</div>
 
-<fieldset>
-  <legend>Salidas</legend>
-  <p>Valor a pagar: {{ total !== null ? '$' + total : '' }}</p>
-</fieldset>
-<br>
+    <div class="flex justify-center gap-3 pt-2">
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Procesar</button>
+      <button type="button" (click)="verRegistros()" class="text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">Ver registros</button>
+    </div>
+  </form>
 
-<p>{{ mensaje }}</p>
-
-<button type="button" (click)="procesar()">Procesar</button>
-<br><br>
-<button type="button" (click)="verRegistros()">Ver Registros</button>
+  <div *ngIf="total !== null" class="mt-8 p-4 bg-gray-50 rounded-lg text-center">
+    <h2 class="text-lg font-semibold text-gray-700">Total a pagar</h2>
+    <p class="mt-2 text-2xl font-bold text-blue-700">{{ total | currency }}</p>
+  </div>
+</div>
