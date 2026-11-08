@@ -1,0 +1,16 @@
+<div class="min-h-screen flex justify-center items-center bg-gray-50 p-4">
+  <div class="bg-white max-w-md w-full p-6 border rounded-lg shadow-md">
+    <p *ngIf="cargando" class="text-gray-600">Cargando registro...</p>
+    <ng-container *ngIf="!cargando">
+      <h2 class="mb-4 text-2xl font-semibold text-gray-900">Eliminar {{ esMaestro ? 'maestro' : 'alumno' }}</h2>
+      <p class="mb-2">{{ esMaestro ? 'ID maestro' : 'Matrícula' }}: <strong>{{ esMaestro ? registro.id_maestro : registro.matricula }}</strong></p>
+      <p class="mb-2">Nombre: {{ registro.nombre }} {{ registro.apaterno }} {{ registro.amaterno }}</p>
+      <p class="mb-4">Correo: {{ registro.correo }}</p>
+      <p *ngIf="mensajeError" class="mb-4 text-red-600">{{ mensajeError }}</p>
+      <div class="flex gap-3">
+        <button type="button" (click)="eliminar()" [disabled]="eliminando || !!mensajeError" class="text-white bg-red-700 hover:bg-red-800 rounded-lg px-5 py-2.5">{{ eliminando ? 'Eliminando...' : 'Confirmar eliminación' }}</button>
+        <a [routerLink]="esMaestro ? '/utl/maestros' : '/utl/alumnos'" class="border rounded-lg px-5 py-2.5">Cancelar</a>
+      </div>
+    </ng-container>
+  </div>
+</div>

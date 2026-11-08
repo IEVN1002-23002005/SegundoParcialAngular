@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 
+
+
 export const routes: Routes = [
   {
     path: "formulario",
@@ -39,8 +41,44 @@ export const routes: Routes = [
       },
     ],
   },
-  // ------------------------
-{
+  {
+    path: "utl",
+    children: [
+      {
+        path: "alumnos",
+        loadComponent: () =>
+          import("./utl/alumnos/alumnos").then((m) => m.default),
+      },
+      {
+        path: "agregar",
+        loadComponent: () =>
+          import("./utl/agregar/agregar").then((m) => m.Agregar),
+      },
+      {
+        path: "maestros",
+        loadComponent: () => import("./utl/maestros/maestros").then((m) => m.MaestrosComponent),
+      },
+      {
+        path: "agregar-maestro",
+        loadComponent: () => import("./utl/agregar-maestro/agregar-maestro").then((m) => m.AgregarMaestroComponent),
+      },
+      {
+        path: "editar/:matricula",
+        loadComponent: () =>
+          import("./utl/editar/editar").then((m) => m.Editar),
+      },
+      {
+        path: "eliminar/:matricula",
+        loadComponent: () =>
+          import("./utl/eliminar/eliminar").then((m) => m.Eliminar),
+      },
+      {
+        path: "eliminar-maestro/:id_maestro",
+        loadComponent: () => import("./utl/eliminar/eliminar").then((m) => m.Eliminar),
+      },
+    ],
+  },
+  {
     path: "",
     redirectTo: "escuela/lista-alumnos",
     pathMatch: "full",
@@ -48,5 +86,9 @@ export const routes: Routes = [
   {
     path: "**",
     redirectTo: "escuela/lista-alumnos",
-  },
+
+    },
+  
+ 
+
 ];

@@ -57,6 +57,15 @@
             >Lista Alumnos</a
           >
         </li>
+        <li>
+          <a
+            routerLink="/utl/maestros"
+            routerLinkActive
+            #m="routerLinkActive"
+            [class]="m.isActive ? activo : inactivo"
+            >Maestros</a
+          >
+        </li>
 
  <li>
           <a

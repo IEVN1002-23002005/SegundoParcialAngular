@@ -1,0 +1,16 @@
+<section class="bg-white border border-gray-200 rounded-lg shadow-md p-6">
+  <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+    <h2 class="text-xl font-bold text-gray-800">Lista de maestros</h2>
+    <a routerLink="/utl/agregar-maestro" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">+ Agregar maestro</a>
+  </div>
+  <input [(ngModel)]="filtro" type="text" class="block w-full md:w-1/2 mb-5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 p-2.5" placeholder="Buscar por ID, nombre, apellidos o correo" />
+  <p *ngIf="cargando" class="text-gray-600">Cargando maestros desde IntroFlask...</p>
+  <p *ngIf="error" class="text-red-600">{{ error }}</p>
+  <p *ngIf="!cargando && !error && !maestros.length" class="text-gray-600">No hay maestros registrados.</p>
+  <div *ngIf="maestrosFiltrados.length" class="overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-700">
+      <thead class="text-xs uppercase bg-gray-800 text-white"><tr><th class="px-4 py-3">ID maestro</th><th class="px-4 py-3">Nombre</th><th class="px-4 py-3">A. paterno</th><th class="px-4 py-3">A. materno</th><th class="px-4 py-3">Correo</th></tr></thead>
+      <tbody><tr *ngFor="let maestro of maestrosFiltrados" class="border-b"><td class="px-4 py-3">{{ maestro.id_maestro }}</td><td class="px-4 py-3">{{ maestro.nombre }}</td><td class="px-4 py-3">{{ maestro.apaterno }}</td><td class="px-4 py-3">{{ maestro.amaterno }}</td><td class="px-4 py-3">{{ maestro.correo }}</td><td class="px-4 py-3"><a [routerLink]="['/utl/eliminar-maestro', maestro.id_maestro]" class="text-red-600 hover:underline">Eliminar</a></td></tr></tbody>
+    </table>
+  </div>
+</section>
